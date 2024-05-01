@@ -8,7 +8,7 @@
         <nav class="navbar" data-navbar>
             <div class="navbar-top">
                 <a href="#" class="logo">
-                    <img src="assets/images/logo-light.svg" width="74" height="24" alt="XtertyArch home">
+                    <img src="{{ asset('xtaa.png') }}" class="logo-light h-24" alt="XtertyArch home">
                 </a>
 
                 <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>

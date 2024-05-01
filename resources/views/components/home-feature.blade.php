@@ -1,4 +1,4 @@
-<section class="section feature" aria-labelledby="feature-label">
+<section class="section feature -mb-16" aria-labelledby="feature-label">
     <div class="container">
 
         <figure class="feature-banner">

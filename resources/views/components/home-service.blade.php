@@ -4,7 +4,7 @@
         <h2 class="h2 section-title">
             The service we offer is specifically designed to meet your needs.
         </h2>
-        <ul class="grid-list">
+        <ul class="grid-list-srv">
             <li>
                 <div class="srv-card">
                     <div class="">
