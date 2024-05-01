@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ini adalah aturan CSS utama untuk tombol */
+.cssbuttons-io-button {
+    background-image: linear-gradient(19deg, #2344FF 0%, #5942FF 100%);
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    border-radius: 10em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: 0 0 1.6em rgba(183, 33, 255, 0.3), 0 0 1.6em hsla(191, 98%, 56%, 0.3);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Ini adalah aturan untuk ikon dalam tombol */
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 10em;
+    right: 0.3em;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Efek hover pada ikon */
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+/* Animasi SVG pada ikon saat tombol dihover */
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #5942FF;
+}
+
+/* Transformasi SVG saat tombol dihover */
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+/* Efek pada tombol saat ditekan */
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.9);
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Menyesuaikan jumlah kolom */
+    justify-content: center;
+    /* Mengatur posisi rata tengah secara horizontal */
+    gap: 20px;
+    /* Jarak antar elemen */
+}
+
+.grid-list li {
+    list-style-type: none;
+    /* Menghilangkan bullet points pada list */
+}
+
+.srv-card {
+    position: relative;
+    width: 100%;
+    /* Menggunakan lebar 100% agar sesuai dengan grid */
+    height: 254px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.srv-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: calc(100% + 10px);
+    /* Menyesuaikan lebar dengan parent yang menggunakan 100% */
+    height: 264px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.srv-card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+}
+
+.srv-card:hover::after {
+    filter: blur(30px);
+}
+
+.srv-card:hover::before {
+    transform: rotate(-180deg) scaleX(1) scaleY(1);
+}
+
+@media screen and (max-width: 768px) {
+    .cssbuttons-io-button {
+        font-size: 14px;
+        padding-left: 1em;
+        padding-right: 2.5em;
+    }
+}
+
+/* Aturan media query untuk responsif */
+/* @media screen and (min-width: 768px) {
+    .grid-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .srv-card {
+        width: 200px;
+    }
+
+    .srv-card::before {
+        width: calc(100% + 10px);
+    }
+
+    .srv-card:hover::before {
+        transform: rotate(-90deg) scaleX(1) scaleY(0.77);
+    }
+
+    .srv-card::after {
+        width: calc(100% + 10px);
+    }
+} */
