@@ -1,7 +1,7 @@
 <section class="section hero has-bg-image" aria-label="home" style="background-image: url('assets/images/hero-bg2.jpg')">
     <div class="container">
         <div class="hero-content">
-            <h1 class="h1 hero-title">Crafting project specific solutions with expertise.</h1>
+            <h1 class="h1 hero-title">{{ $dataTideHero->title }}</h1>
             <p class="hero-text">
                 We’re a creative company that focuses on establishing long-term relationships with
                 customers.
@@ -35,40 +35,15 @@
 
             <div class="slider-inner">
                 <ul class="slider-container" data-slider-container>
-
-                    <li class="slider-item">
-
-                        <figure class="img-holder" style="--width: 575; --height: 550;">
-                            <img src="assets/images/hero-slide-1.jpg" width="575" height="550" alt=""
-                                class="img-cover">
-                        </figure>
-
-                    </li>
-
-                    <li class="slider-item">
-
-                        <div class="hero-card">
-                            <figure class="img-holder" style="--width: 575; --height: 550;">
-                                <img src="assets/images/hero-slide-2.jpg" width="575" height="550"
-                                    alt="hero banner" class="img-cover">
-                            </figure>
-
-                            <button class="play-btn" aria-label="play XtertyArch intro">
-                                <ion-icon name="play" aria-hidden="true"></ion-icon>
-                            </button>
-                        </div>
-
-                    </li>
-
-                    <li class="slider-item">
-
-                        <figure class="img-holder" style="--width: 575; --height: 550;">
-                            <img src="assets/images/hero-slide-3.jpg" width="575" height="550" alt=""
-                                class="img-cover">
-                        </figure>
-
-                    </li>
-
+                    @if($dataHero)
+                        @foreach($dataHero->image as $key => $imageUrl)
+                            <li class="slider-item">
+                                <figure class="img-holder" style="--width: 575; --height: 550;">
+                                    <img src="{{ Storage::url($imageUrl) }}" width="575" height="550" alt="{{ $key }}" class="img-cover">
+                                </figure>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 

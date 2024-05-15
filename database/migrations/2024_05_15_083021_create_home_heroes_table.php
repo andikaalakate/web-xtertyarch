@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('home_heroes', function (Blueprint $table) {
             $table->id();
-            $table->array('image');
+            $table->json('image');
             $table->string('btx_explore');
             $table->string('btx_contact');
             $table->string('link_explore');
