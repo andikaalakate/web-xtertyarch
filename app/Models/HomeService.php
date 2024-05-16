@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class HomeService extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'icon', 'tx_title', 'tx_description', 'is_active'
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
 }

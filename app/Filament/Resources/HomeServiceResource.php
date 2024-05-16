@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HomeTideResource\Pages;
-use App\Filament\Resources\HomeTideResource\RelationManagers;
-use App\Models\HomeTide;
+use App\Filament\Resources\HomeServiceResource\Pages;
+use App\Filament\Resources\HomeServiceResource\RelationManagers;
+use App\Models\HomeService;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HomeTideResource extends Resource
+class HomeServiceResource extends Resource
 {
-    protected static ?string $model = HomeTide::class;
+    protected static ?string $model = HomeService::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,25 +23,14 @@ class HomeTideResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('section')
-                ->options(
-                    [
-                        'hero'=> 'Hero',
-                        'service' => 'Service',
-                        'about'=> 'About',
-                        'feature'=> 'Feature',
-                        'team' => 'Team',
-                        'project'=> 'Project',
-                        'product' => 'Product',
-                        'cta'=> 'CTA',
-                        'testimoni'=> 'Testimoni',
-                    ]
-                )
-                    ->required(),
-                Forms\Components\TextInput::make('title')
+                Forms\Components\TextInput::make('icon')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('subtitle')
+                Forms\Components\TextInput::make('tx_title')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('tx_description')
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\Toggle::make('is_active')
                     ->required(),
@@ -52,15 +41,14 @@ class HomeTideResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('section'),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('icon')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tx_title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tx_description')
                     ->limit(30)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('subtitle')
-                    ->limit(30)
-                    ->searchable(),
-                Tables\Columns\ToggleColumn::make('is_active')
-                    ->searchable(),
+                Tables\Columns\ToggleColumn::make('is_active'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -97,9 +85,9 @@ class HomeTideResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHomeTides::route('/'),
-            'create' => Pages\CreateHomeTide::route('/create'),
-            'edit' => Pages\EditHomeTide::route('/{record}/edit'),
+            'index' => Pages\ListHomeServices::route('/'),
+            'create' => Pages\CreateHomeService::route('/create'),
+            'edit' => Pages\EditHomeService::route('/{record}/edit'),
         ];
     }
 }

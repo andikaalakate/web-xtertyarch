@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('customer');
             $table->integer('employee');
             $table->integer('award');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

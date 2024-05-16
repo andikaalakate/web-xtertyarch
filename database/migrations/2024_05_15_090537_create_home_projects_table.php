@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('date_end');
             $table->string('status');
             $table->enum('category', ['web', 'mobile', 'design', 'marketing', 'network', 'other']);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

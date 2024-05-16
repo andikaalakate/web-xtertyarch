@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('image');
             $table->json('social_media');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

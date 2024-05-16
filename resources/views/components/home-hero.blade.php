@@ -1,14 +1,13 @@
-<section class="section hero has-bg-image" aria-label="home" style="background-image: url('assets/images/hero-bg2.jpg')">
-    <div class="container">
+<section class="section hero flex has-bg-image 2xl:min-h-screen" aria-label="home" style="background-image: url('assets/images/hero-bg2.jpg')">
+    <div class="container justify-center">
         <div class="hero-content">
             <h1 class="h1 hero-title">{{ $dataTideHero->title }}</h1>
             <p class="hero-text">
-                We’re a creative company that focuses on establishing long-term relationships with
-                customers.
+                {{ $dataTideHero->subtitle }}
             </p>
             <div class="btn-wrapper">
-                <a href="#" class="transition-all duration-500">
-                    <button class="cssbuttons-io-button"> Explore Now
+                <a href="{{ $dataHero->link_explore }}" class="transition-all duration-500">
+                    <button class="cssbuttons-io-button"> {{ $dataHero->btx_explore }}
                         <div class="icon">
                             <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 0h24v24H0z" fill="none"></path>
@@ -21,10 +20,10 @@
                     </button>
                 </a>
 
-                <a href="#" class="">
+                <a href="{{ $dataHero->link_contact }}" class="">
                     <button
                         class="bg-[#5942FF] hover:bg-[#2344FF] text-slate-100 font-bold py-3 px-6 rounded-full shadow-lg shadow-neutral-950 hover:text-white transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
-                        Contact Us
+                        {{ $dataHero->btx_contact }}
                     </button>
 
                 </a>

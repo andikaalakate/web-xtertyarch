@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('tx_description');
             $table->json('list_check');
             $table->string('image');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

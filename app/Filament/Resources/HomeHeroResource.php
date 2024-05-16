@@ -89,9 +89,8 @@ class HomeHeroResource extends Resource
                 Tables\Columns\TextColumn::make('link_contact')
                     ->label('Link Contact')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Active')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->label('Active'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

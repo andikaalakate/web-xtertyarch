@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\HomeTide;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,10 @@ class HomeAbout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.home-about');
+        $dataTideAbout = HomeTide::where([
+            ['is_active', true],
+            ['section', 'about']
+        ])->first();
+        return view('components.home-about', ['dataTideAbout' => $dataTideAbout]);
     }
 }

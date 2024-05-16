@@ -8,10 +8,10 @@
 
         <div class="about-content">
 
-            <p class="section-subtitle" id="about-label">Why Choose Us?</p>
+            <p class="section-subtitle" id="about-label">{{ $dataTideAbout->title }}</p>
 
             <h2 class="h2 section-title">
-                We bring solutions to make life easier for our clients.
+                {{ $dataTideAbout->subtitle }}
             </h2>
 
             <ul>
