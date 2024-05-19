@@ -18,6 +18,9 @@ class HomeTideResource extends Resource
     protected static ?string $model = HomeTide::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationLabel = 'Title / Description';
+    protected static ?string $recordTitleAttribute = 'section';
 
     public static function form(Form $form): Form
     {

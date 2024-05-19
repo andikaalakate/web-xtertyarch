@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -19,6 +20,9 @@ class HomeHeroResource extends Resource
     protected static ?string $model = HomeHero::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Home';
+    protected static ?string $navigationLabel = 'Hero';
+
 
     public static function form(Form $form): Form
     {
@@ -63,6 +67,8 @@ class HomeHeroResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('link_contact')
                     ->label('Link Contact')
+                    ->prefix('https://')
+                    // ->default('https://')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Toggle::make('is_active')
@@ -105,7 +111,7 @@ class HomeHeroResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                // Filter::make('is_active')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
