@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Auth\CustomRegister;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -31,6 +32,7 @@ class CustomerPanelProvider extends PanelProvider
             ])
             ->authGuard('web')
             ->login()
+            ->registration(CustomRegister::class)
             ->passwordReset()
             ->emailVerification()
             ->profile()

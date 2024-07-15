@@ -720,7 +720,8 @@ body.nav-active {
 \*-----------------------------------*/
 
 .stats {
-  background-image: linear-gradient(to bottom, var(--white) 50%, var(--cultured) 50%);
+  background-color: white;
+  /* background-image: linear-gradient(to bottom, var(--white) 50%, var(--cultured) 50%); */
 }
 
 .stats-card {

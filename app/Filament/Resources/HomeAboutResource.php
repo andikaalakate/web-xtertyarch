@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class HomeAboutResource extends Resource
 {
@@ -25,15 +26,41 @@ class HomeAboutResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('tx_title')
+                Forms\Components\KeyValue::make('tx_title')
+                    ->keyLabel('Title')
+                    ->valueLabel('Isi')
+                    ->addActionLabel('Tambah')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('tx_description')
+                    ->label('Title'),
+                Forms\Components\KeyValue::make('tx_description')
+                    ->keyLabel('Description')
+                    ->valueLabel('Isi')
+                    ->addActionLabel('Tambah')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
-                    ->image()
-                    ->required(),
+                    ->label('Description'),
+            Forms\Components\FileUpload::make('image')
+                ->image()
+                ->imageEditor()
+                ->imageEditorAspectRatios([
+                    null,
+                    '16:9',
+                    '4:3',
+                    '1:1',
+                ])
+                ->label('Image About')
+                ->required()
+                ->directory('uploads/images/home-abouts')
+                ->dehydrateStateUsing(function ($state) {
+                    if (is_string($state)) {
+                        return json_encode([
+                            'path' => $state,
+                            'name' => pathinfo($state, PATHINFO_FILENAME),
+                            'extension' => pathinfo($state, PATHINFO_EXTENSION),
+                            'size' => Storage::disk('public')->size($state),
+                        ]);
+                    }
+                    return $state;
+                }),
                 Forms\Components\Toggle::make('is_active')
                     ->required(),
             ]);
@@ -43,10 +70,6 @@ class HomeAboutResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('tx_title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tx_description')
-                    ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),

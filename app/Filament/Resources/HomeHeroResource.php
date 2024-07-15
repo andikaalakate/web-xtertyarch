@@ -43,7 +43,6 @@ class HomeHeroResource extends Resource
                     ->directory('uploads/images/home-heroes')
                     ->dehydrateStateUsing(function ($state) {
                         if (is_string($state)) {
-                            // Generate JSON data for the uploaded image
                             return json_encode([
                                 'path' => $state,
                                 'name' => pathinfo($state, PATHINFO_FILENAME),

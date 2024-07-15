@@ -19,11 +19,6 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') . '?id=' . Str::random(16) }}" />
 
-    {{-- <link rel="preload" as="image" href="{{ asset('assets/images/hero-bg.jpg') }}">
-    <link rel="preload" as="image" href="{{ asset('assets/images/hero-slide-1.jpg') }}">
-    <link rel="preload" as="image" href="{{ asset('assets/images/hero-slide-2.jpg') }}">
-    <link rel="preload" as="image" href="{{ asset('assets/images/hero-slide-3.jpg') }}"> --}}
-
 </head>
 
 <body>

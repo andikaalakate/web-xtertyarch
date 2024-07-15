@@ -120,24 +120,26 @@ for (let i = 0, len = sliders.length; i < len; i++) { initSlider(sliders[i]); }
 
 const accordions = document.querySelectorAll("[data-accordion]");
 
-let lastActiveAccordion = accordions[0];
+let lastActiveAccordion = null;
 
 const initAccordion = function (currentAccordion) {
+    const accordionBtn = currentAccordion.querySelector("[data-accordion-btn]");
 
-  const accordionBtn = currentAccordion.querySelector("[data-accordion-btn]");
+    const expandAccordion = function () {
+        if (lastActiveAccordion && lastActiveAccordion !== currentAccordion) {
+            lastActiveAccordion.classList.remove("expanded");
+        }
 
-  const expandAccordion = function () {
-    if (lastActiveAccordion && lastActiveAccordion !== currentAccordion) {
-      lastActiveAccordion.classList.remove("expanded");
-    }
+        currentAccordion.classList.toggle("expanded");
 
-    currentAccordion.classList.toggle("expanded");
+        if (currentAccordion.classList.contains("expanded")) {
+            lastActiveAccordion = currentAccordion;
+        } else {
+            lastActiveAccordion = null;
+        }
+    };
 
-    lastActiveAccordion = currentAccordion;
-  }
+    accordionBtn.addEventListener("click", expandAccordion);
+};
 
-  accordionBtn.addEventListener("click", expandAccordion);
-
-}
-
-for (let i = 0, len = accordions.length; i < len; i++) { initAccordion(accordions[i]); }
+accordions.forEach((accordion) => initAccordion(accordion));

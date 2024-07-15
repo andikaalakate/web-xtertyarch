@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class HomeFeatureResource extends Resource
 {
@@ -28,11 +29,35 @@ class HomeFeatureResource extends Resource
                 Forms\Components\TextInput::make('tx_description')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('list_check')
-                    ->required(),
+                Forms\Components\KeyValue::make('list_check')
+                    ->keyLabel('List')
+                    ->valueLabel('Isi')
+                    ->addActionLabel('Tambah')
+                    ->required()
+                    ->label('List Check'),
                 Forms\Components\FileUpload::make('image')
                     ->image()
-                    ->required(),
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        null,
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
+                    ->label('Image About')
+                    ->required()
+                    ->directory('uploads/images/home-features')
+                    ->dehydrateStateUsing(function ($state) {
+                        if (is_string($state)) {
+                            return json_encode([
+                                'path' => $state,
+                                'name' => pathinfo($state, PATHINFO_FILENAME),
+                                'extension' => pathinfo($state, PATHINFO_EXTENSION),
+                                'size' => Storage::disk('public')->size($state),
+                            ]);
+                        }
+                        return $state;
+                    }),
                 Forms\Components\Toggle::make('is_active')
                     ->required(),
             ]);
@@ -45,8 +70,8 @@ class HomeFeatureResource extends Resource
                 Tables\Columns\TextColumn::make('tx_description')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('is_active')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

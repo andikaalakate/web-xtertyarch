@@ -14,6 +14,7 @@ use Filament\Support\Enums\Platform;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use GeoSot\FilamentEnvEditor\FilamentEnvEditorPlugin;
 use Hasnayeen\Themes\Http\Middleware\SetTheme;
 use Hasnayeen\Themes\ThemesPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -89,9 +90,10 @@ class AdminPanelProvider extends PanelProvider
                         'sm' => 2,
                         'md' => 3,
                         'lg' => 4,
-                        'xl' => 5,
+                        'xl' => 4,
                         '2xl' => null,
                     ]),
+                // FilamentEnvEditorPlugin::make(),
             ]);
     }
 }
