@@ -8,7 +8,8 @@
 
     <title>XtertyArch</title>
     <meta name="title" content="XtertyArch">
-    <link rel="stylesheet" href="{{ mix('css/app.css') . '?id=' . Str::random(16) }}" />
+    <link rel="stylesheet" href="{{ asset('home.css') . '?id=' . Str::random(16) }}" />
+    @vite(['resources/css/app.css'])
 
     <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
 

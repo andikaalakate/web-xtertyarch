@@ -38,29 +38,29 @@ class HomeAboutResource extends Resource
                     ->addActionLabel('Tambah')
                     ->required()
                     ->label('Description'),
-            Forms\Components\FileUpload::make('image')
-                ->image()
-                ->imageEditor()
-                ->imageEditorAspectRatios([
-                    null,
-                    '16:9',
-                    '4:3',
-                    '1:1',
-                ])
-                ->label('Image About')
-                ->required()
-                ->directory('uploads/images/home-abouts')
-                ->dehydrateStateUsing(function ($state) {
-                    if (is_string($state)) {
-                        return json_encode([
-                            'path' => $state,
-                            'name' => pathinfo($state, PATHINFO_FILENAME),
-                            'extension' => pathinfo($state, PATHINFO_EXTENSION),
-                            'size' => Storage::disk('public')->size($state),
-                        ]);
-                    }
-                    return $state;
-                }),
+                Forms\Components\FileUpload::make('image')
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        null,
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
+                    ->label('Image About')
+                    ->required()
+                    ->directory('uploads/images/home-abouts')
+                    ->dehydrateStateUsing(function ($state) {
+                        if (is_string($state)) {
+                            return json_encode([
+                                'path' => $state,
+                                'name' => pathinfo($state, PATHINFO_FILENAME),
+                                'extension' => pathinfo($state, PATHINFO_EXTENSION),
+                                'size' => Storage::disk('public')->size($state),
+                            ]);
+                        }
+                        return $state;
+                    }),
                 Forms\Components\Toggle::make('is_active')
                     ->required(),
             ]);

@@ -30,6 +30,7 @@ class CustomerPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->viteTheme('resources/css/filament/customer/theme.css')
             ->authGuard('web')
             ->login()
             ->registration(CustomRegister::class)

@@ -1,0 +1,471 @@
+/* Ini adalah aturan CSS utama untuk tombol */
+.cssbuttons-io-button {
+    background-image: linear-gradient(19deg, #2344FF 0%, #5942FF 100%);
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    border-radius: 10em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: 0 0 1.6em rgba(183, 33, 255, 0.3), 0 0 1.6em hsla(191, 98%, 56%, 0.3);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Ini adalah aturan untuk ikon dalam tombol */
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 10em;
+    right: 0.3em;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+/* Efek hover pada ikon */
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+/* Animasi SVG pada ikon saat tombol dihover */
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #5942FF;
+}
+
+/* Transformasi SVG saat tombol dihover */
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+/* Efek pada tombol saat ditekan */
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.9);
+}
+
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Menyesuaikan jumlah kolom */
+    justify-content: center;
+    /* Mengatur posisi rata tengah secara horizontal */
+    gap: 30px;
+    /* Jarak antar elemen */
+}
+
+.grid-list li {
+    list-style-type: none;
+    /* Menghilangkan bullet points pada list */
+}
+
+.grid-list-srv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Menyesuaikan jumlah kolom */
+    justify-content: center;
+    /* Mengatur posisi rata tengah secara horizontal */
+    gap: 30px;
+    /* Jarak antar elemen */
+}
+
+.grid-list-srv li {
+    list-style-type: none;
+    /* Menghilangkan bullet points pada list */
+}
+
+.grid-list-project {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Menyesuaikan jumlah kolom */
+    justify-content: center;
+    /* Mengatur posisi rata tengah secara horizontal */
+    gap: 60px;
+    /* Jarak antar elemen */
+}
+
+.grid-list-project li {
+    list-style-type: none;
+    /* Menghilangkan bullet points pada list */
+}
+
+.grid-list-product {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Menyesuaikan jumlah kolom */
+    justify-content: center;
+    /* Mengatur posisi rata tengah secara horizontal */
+    gap: 25px;
+    /* Jarak antar elemen */
+}
+
+.grid-list-product li {
+    list-style-type: none;
+    /* Menghilangkan bullet points pada list */
+}
+
+.srv-card {
+    position: relative;
+    width: 100%;
+    /* Menggunakan lebar 100% agar sesuai dengan grid */
+    height: 254px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.srv-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: calc(100% + 10px);
+    /* Menyesuaikan lebar dengan parent yang menggunakan 100% */
+    height: 264px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    z-index: -10;
+    pointer-events: none;
+    /* transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+}
+
+.srv-card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    /* transform: translate3d(0, 0, 0) scale(0.95); */
+    filter: blur(30px);
+}
+
+/* 
+.srv-card:hover::after {
+    filter: blur(30px);
+}
+
+.srv-card:hover::before {
+    transform: rotate(-180deg) scaleX(1) scaleY(1);
+} */
+
+@media screen and (max-width: 768px) {
+    .cssbuttons-io-button {
+        font-size: 14px;
+        padding-left: 1em;
+        padding-right: 2.5em;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .grid-list-srv {
+        gap: 50px;
+    }
+}
+
+.project-card {
+    width: 100%;
+    height: 500px;
+    transition: all 0.2s;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 7px 7px 0px 0px #151416;
+}
+
+.project-card-inner {
+    width: inherit;
+    height: inherit;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+}
+
+.project-card:hover {
+    transform: scale(1.04) rotate(1deg);
+}
+
+.project-circle {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0px 0px 5px 5px #2344FF;
+    animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.project-circle:nth-child(1) {
+    top: -25px;
+    left: -25px;
+}
+
+.project-circle:nth-child(2) {
+    bottom: -25px;
+    right: -25px;
+    animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes move-down1 {
+    to {
+        transform: translateY(10px);
+    }
+}
+
+/* Aturan media query untuk responsif */
+/* @media screen and (min-width: 768px) {
+    .grid-list-srv {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .srv-card {
+        width: 200px;
+    }
+
+    .srv-card::before {
+        width: calc(100% + 10px);
+    }
+
+    .srv-card:hover::before {
+        transform: rotate(-90deg) scaleX(1) scaleY(0.77);
+    }
+
+    .srv-card::after {
+        width: calc(100% + 10px);
+    }
+} */
+.product .container :is(.section-subtitle, .section-title) {
+    text-align: center;
+}
+
+.product .container .section-title {
+    max-width: 32ch;
+    margin: auto;
+    margin-block-end: 50px;
+}
+
+.product-container {
+    position: relative;
+}
+
+.product-card {
+    font-family: Lato, sans-serif;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #232323;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.product-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #2344FF;
+    clip-path: circle(150px at 80% 20%);
+    transition: .5s ease-in-out;
+}
+
+.product-card:hover:before {
+    clip-path: circle(300px at 80% -20%);
+}
+
+.product-title {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-top: 12px;
+}
+
+.product-bg-title {
+    font-size: 10em;
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(255, 255, 255, .04);
+    position: absolute;
+    max-width: 120%;
+    top: -150%;
+    transition: .6s;
+}
+
+.product-card:hover .product-bg-title {
+    transform: translateY(60%);
+}
+
+.product-photo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 100%;
+    height: 220px;
+    transition: .5s;
+}
+
+.product-card:hover .product-photo {
+    top: 0%;
+    transform: translateY(0%);
+}
+
+.product-photo img {
+    position: absolute;
+    width: 220px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    transition: .5s;
+}
+
+.product-card:hover .product-photo img {
+    width: 260px;
+    top: 56%;
+}
+
+.product-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    transition: 1s;
+    z-index: 5;
+}
+
+.product-card:hover .product-content {
+    height: 190px;
+}
+
+.feature-prod {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    transition: .5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.product-card:hover .feature-prod {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: .5s;
+}
+
+.feature-prod div {
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+.feature-prod span {
+    min-width: 20px;
+    padding: 0 4px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 14px;
+    display: inline-block;
+    color: #111;
+    background: #fff;
+    margin: 0 5px;
+    transition: .4s;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.feature-prod span:hover {
+    color: #000;
+    background: var(--product-color);
+}
+
+.btn-buy {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s;
+    cursor: pointer;
+    outline: none;
+}
+
+.product-card:hover .btn-buy {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.5s;
+    transition-delay: 0.5s;
+}
+
+.product-card:hover .btn-buy:hover {
+    background: var(--product-color);
+    transition-delay: 0;
+    transition: 0.05s;
+}
+
+.product-1 {
+    --product-color: #2344FF;
+}
+
+.prod-size span {
+    cursor: pointer;
+    z-index: 50;
+}
+
+.feature-prod .prod-tt:hover {
+    background: #038dff;
+}
+
+.feature-prod .prod-ttt:hover {
+    background: #09ff0d;
+}
+
+.team .container :is(.section-subtitle, .section-title) {
+    text-align: center;
+}
+
+.team .container .section-title {
+    max-width: 32ch;
+    margin: auto;
+    margin-block-end: 50px;
+}
